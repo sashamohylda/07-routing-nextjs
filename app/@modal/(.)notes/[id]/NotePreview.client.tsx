@@ -17,6 +17,9 @@ export default function NotePreviewClient() {
   } = useQuery({
     queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
+    // Дані вже прийшли з сервера (prefetch + HydrationBoundary) — не тягнемо їх вдруге.
+    // Якщо серверний запит упав, кешу немає, і запит усе одно виконається
+    refetchOnMount: false,
   });
 
   // Закриття = повернення на сторінку, з якої відкрили модалку

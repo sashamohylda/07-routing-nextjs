@@ -43,6 +43,8 @@ export default function NotesClient({ tag }: NotesClientProps) {
     queryKey: ['notes', page, search, tag ?? 'all'],
     queryFn: () => fetchNotes({ page, perPage: NOTES_PER_PAGE, search, tag }),
     placeholderData: keepPreviousData,
+    // Першу сторінку вже отримано на сервері — не повторюємо запит при монтуванні
+    refetchOnMount: false,
     // Помилку отримує app/notes/filter/[...slug]/error.tsx
     throwOnError: true,
   });

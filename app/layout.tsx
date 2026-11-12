@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   description: 'NoteHub — a simple app for managing personal notes',
 };
 
-export default function RootLayout({ children, modal }: LayoutProps<'/'>) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+  // Слот @modal: прев'ю нотатки поверх поточної сторінки
+  modal: React.ReactNode;
+}
+
+export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
